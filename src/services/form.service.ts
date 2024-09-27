@@ -8,10 +8,10 @@ import {
 } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { CreateFormDto } from 'src/dtos/form.dto';
-import { Form, FormDocument } from 'src/models/form.model';
+import { CreateFormDto } from '../dtos/form.dto';
+import { Form, FormDocument } from '../models/form.model';
 import { UserService } from './user.service';
-import { ResponseDTO, successfulResponse } from 'src/dtos/response.dto';
+import { ResponseDTO, successfulResponse } from '../dtos/response.dto';
 
 @Injectable()
 export class FormService {
@@ -45,7 +45,7 @@ export class FormService {
 
   async findAll(): Promise<Form[]> {
     try {
-      return this.formModel.find().exec();
+      return await this.formModel.find().exec();
     } catch (err) {
       throw new BadRequestException(err.message);
     }

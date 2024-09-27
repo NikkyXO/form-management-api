@@ -6,9 +6,9 @@ import {
 } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { Submission, SubmissionDocument } from 'src/models/submission.model';
+import { Submission, SubmissionDocument } from '../models/submission.model';
 import { FormService } from './form.service';
-import { CreateSubmissionDto } from 'src/dtos/submission.dto';
+import { CreateSubmissionDto } from '../dtos/submission.dto';
 
 @Injectable()
 export class SubmissionService {
@@ -54,7 +54,10 @@ export class SubmissionService {
       const form = await this.formService.findOne(createSubmissionDto.formId);
 
       for (const field of form.fields) {
-        if (field.required && !createSubmissionDto.responses[field.name]) {
+        const response = createSubmissionDto.responses.find(
+          (response) => response.name == field.name,
+        );
+        if (field.required && (!response || !response.answers)) {
           throw new BadRequestException(`Field "${field.name}" is required`);
         }
       }

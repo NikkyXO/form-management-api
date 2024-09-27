@@ -1,7 +1,7 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document, Types } from 'mongoose';
 import { Form } from './form.model';
-import { BaseEntity } from 'src/types';
+import { BaseEntity } from '../types';
 import { ApiProperty } from '@nestjs/swagger';
 import { Account } from './account.model';
 

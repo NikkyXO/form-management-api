@@ -1,8 +1,8 @@
 import { Controller, Get, Post, Body, Param } from '@nestjs/common';
 import { ApiOkResponse, ApiTags } from '@nestjs/swagger';
-import { CreateSubmissionDto } from 'src/dtos/submission.dto';
-import { Submission } from 'src/models/submission.model';
-import { SubmissionService } from 'src/services/submission.service';
+import { CreateSubmissionDto } from '../dtos/submission.dto';
+import { Submission } from '../models/submission.model';
+import { SubmissionService } from '../services/submission.service';
 
 @ApiTags('Submissions')
 @Controller('submissions')

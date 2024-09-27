@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsNotEmpty, IsObject, IsString } from 'class-validator';
+import { IsArray, IsNotEmpty, IsObject, IsString } from 'class-validator';
 
 export class CreateSubmissionDto {
   @ApiProperty()
@@ -14,6 +14,6 @@ export class CreateSubmissionDto {
 
   @ApiProperty()
   @IsNotEmpty()
-  @IsObject()
-  responses: Record<string, any>;
+  @IsArray()
+  responses: Record<string, any>[];
 }

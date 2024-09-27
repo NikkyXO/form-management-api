@@ -8,11 +8,11 @@ import {
   Delete,
 } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
-import { CreateFormDto } from 'src/dtos/form.dto';
-import { ResponseDTO, successfulResponse } from 'src/dtos/response.dto';
-import { Form } from 'src/models/form.model';
-import { FormService } from 'src/services/form.service';
-import { UserService } from 'src/services/user.service';
+import { CreateFormDto } from '../dtos/form.dto';
+import { ResponseDTO } from '../dtos/response.dto';
+import { Form } from '../models/form.model';
+import { FormService } from '../services/form.service';
+import { UserService } from '../services/user.service';
 
 @ApiTags('Forms')
 @Controller('forms')

@@ -1,7 +1,7 @@
 import { Controller, Get, Param } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
-import { Account } from 'src/models/account.model';
-import { UserService } from 'src/services/user.service';
+import { Account } from '../models/account.model';
+import { UserService } from '../services/user.service';
 
 @ApiTags('Users')
 @Controller('users')
@@ -14,7 +14,7 @@ export class UserController {
   }
 
   @Get()
-  async findByForm(): Promise<Account[]> {
+  async fetchAll(): Promise<Account[]> {
     return this.userService.findAll();
   }
 }

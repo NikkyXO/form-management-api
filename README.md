@@ -1,6 +1,7 @@
 
 ## Form Management System API
-<p align="center"><b>This project is a NestJS-based API for a Form Management System. It allows users to create, update, delete, and retrieve forms, as well as submit responses to these forms.
+###  Description
+<p><b>This project is a NestJS-based API for a Form Management System. It allows users to create, update, delete, and retrieve forms, as well as submit responses to these forms.
 Features<b></p>
 
  - Form CRUD operations
@@ -16,10 +17,6 @@ Features<b></p>
  - MongoDB
  - Docker (optional)
 
-
-## Description
-
-[FormManagement](https://github.com/NikkyXO/form-management-api.git) A Form Management API
 
 ### Setup and Installation
 
@@ -92,11 +89,6 @@ $ docker-compose up
 ```
 
 
-**Note:**
-<p>The MONGODB_URI assumes you're running MongoDB on your host machine. Adjust as necessary for your setup.
-</p>
-
-
 #### Contributing
 <p>Contributions are welcome! Please feel free to submit a Pull Request.</p>
 
@@ -104,3 +96,9 @@ $ docker-compose up
 This project is licensed under the MIT License.
 
 
+
+// DEADLINE: by September 30th, 2024
+
+docker-compose up --build
+
+docker-compose down

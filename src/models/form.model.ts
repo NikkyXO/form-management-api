@@ -1,7 +1,7 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { ApiProperty } from '@nestjs/swagger';
 import { Document } from 'mongoose';
-import { BaseEntity } from 'src/types';
+import { BaseEntity } from '../types';
 
 export enum FieldType {
   TEXT = 'text',

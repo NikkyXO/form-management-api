@@ -3,7 +3,7 @@ import { Document } from 'mongoose';
 
 // import { IsEmail, isEmail } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
-import { BaseEntity } from 'src/types';
+import { BaseEntity } from '../types';
 export type AccountDocument = Account & Document;
 
 @Schema({
