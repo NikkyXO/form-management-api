@@ -1,0 +1,27 @@
+[
+    {
+      "phone": "+1234567890",
+      "email": "john@mailinator.com",
+      "country": "NG",
+      "firstName": "John",
+      "lastName": "Doe"
+    },
+    {
+      "phone": "+1987654321",
+      "email": "Jane@mailinator.com",
+      "country": "US",
+      "firstName": "Jane",
+      "lastName": "Smith"
+    },
+    {
+        "phone": "+1234567890",
+        "email": "Darkoo@mailinator.com",
+        "country": "NG",
+        "firstName": "Darkoo",
+        "lastName": "Doe"
+      }
+  ]
+  
+  
+      
+  

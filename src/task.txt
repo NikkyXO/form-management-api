@@ -1,0 +1,27 @@
+Task Description:
+Create an API for a Form Management System. While the number and endpoints specifics are left to your imagination, the API should handle the following core operations:
+Form Creation, Deletion, Update, and Retrieval:
+A form should have a title, description, fields (e.g., text input, dropdown, etc.), and metadata (e.g., created by, date created).
+Fields can be of various types like text input, dropdowns, checkboxes, etc.
+Allow forms to have multiple fields of different types.
+Submission of Responses:
+Users should be able to submit responses to a form.
+Each form response should be saved and retrievable.
+Form Validation:
+Ensure fields required in the form are validated upon submission.
+Error Handling:
+Create robust error handling for cases like submitting responses to a non-existent form or submitting invalid data.
+Handle cases where the form submission quota has been exceeded.
+Basic Analytics (Optional, for bonus points):
+Track the number of form responses submitted.
+Important Notes:
+The User APIs can be ignored for authentication; it is assumed that there are users already registered who own forms or can respond to the forms (this section may be hardcoded or discarded)
+Assume responses will be stored in a NoSQL database like Google Cloud Datastore (or any NoSQL database of your choice).
+Nice to Have:
+API documentation using Swagger or Postman.
+Unit tests for core functionalities.
+Ensure that the application is containerized using Docker.
+Submission:
+Create a public repository on GitHub and share the link.
+Include a README.md file with setup and running instructions.
+Provide any additional information or explanations you think are necessary.
