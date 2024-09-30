@@ -1,22 +1,13 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { FormController } from './controllers/form.controller';
 import { SubmissionController } from './controllers/submission.controller';
 import { UserController } from './controllers/user.controller';
-import { UserSeederService } from './models/user-seeder.service';
-import { FormService } from './services/form.service';
-import { SubmissionService } from './services/submission.service';
-import { UserService } from './services/user.service';
-import { FieldType, Form, FormSchema } from './models/form.model';
-import { ConfigModule, ConfigService } from '@nestjs/config';
-import { configuration } from './config';
-import { MongooseModule } from '@nestjs/mongoose';
-import { Submission, SubmissionSchema } from './models/submission.model';
-import { Account, AccountSchema } from './models/account.model';
-import mongoose from 'mongoose';
+import { FieldType } from './models/form.model';
+import { AppModule } from './app.module';
 
 describe('AppController', () => {
+  let app: TestingModule;
   let appController: AppController;
   let formController: FormController;
   let submissionController: SubmissionController;
@@ -24,41 +15,9 @@ describe('AppController', () => {
   let userId;
   let formId: string;
 
-  beforeEach(async () => {
-    const app: TestingModule = await Test.createTestingModule({
-      imports: [
-        // ConfigModule.forRoot(),
-        ConfigModule.forRoot({
-          isGlobal: true,
-          load: [configuration],
-          envFilePath: '.env.fm',
-        }),
-        MongooseModule.forFeature([
-          { name: Submission.name, schema: SubmissionSchema },
-          { name: Form.name, schema: FormSchema },
-          { name: Account.name, schema: AccountSchema },
-        ]),
-        MongooseModule.forRootAsync({
-          imports: [ConfigModule],
-          useFactory: async (configService: ConfigService) => ({
-            uri: configService.get<string>('mongoDBURI'),
-          }),
-          inject: [ConfigService],
-        }),
-      ],
-      controllers: [
-        AppController,
-        SubmissionController,
-        FormController,
-        UserController,
-      ],
-      providers: [
-        AppService,
-        FormService,
-        SubmissionService,
-        UserSeederService,
-        UserService,
-      ],
+  beforeAll(async () => {
+    app = await Test.createTestingModule({
+      imports: [AppModule],
     }).compile();
 
     appController = app.get<AppController>(AppController);
@@ -72,10 +31,10 @@ describe('AppController', () => {
         'No users found in the database. Make sure seeding is working correctly.',
       );
     }
-    userId = users[0]._id.toString();
+    userId = users[1]._id.toString();
   });
   afterAll(async () => {
-    await mongoose.disconnect();
+    await app.close();
   });
 
   describe('Form Operations', () => {

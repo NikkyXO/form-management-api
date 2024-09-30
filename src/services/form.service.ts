@@ -39,6 +39,7 @@ export class FormService {
         message: `Form successfully created`,
       });
     } catch (err) {
+      console.log(err.message);
       throw new UnprocessableEntityException(err.message);
     }
   }
@@ -53,11 +54,7 @@ export class FormService {
 
   async findOne(id: string): Promise<Form> {
     try {
-      const form = await this.formModel.findById(id).exec();
-      if (!form) {
-        throw new NotFoundException(`Form with ID "${id}" not found`);
-      }
-      return form;
+      return await this.formModel.findById(id).exec();
     } catch (err) {
       throw new BadRequestException(err.message);
     }

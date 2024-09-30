@@ -1,5 +1,13 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsArray, IsNotEmpty, IsObject, IsString } from 'class-validator';
+import { IsArray, IsNotEmpty, IsString } from 'class-validator';
+
+export class Responses {
+  @ApiProperty()
+  name: string;
+
+  @ApiProperty()
+  answers: any;
+}
 
 export class CreateSubmissionDto {
   @ApiProperty()
@@ -12,8 +20,8 @@ export class CreateSubmissionDto {
   @IsString()
   accountId: string;
 
-  @ApiProperty()
+  @ApiProperty({ type: [Responses] })
   @IsNotEmpty()
   @IsArray()
-  responses: Record<string, any>[];
+  responses: Responses[];
 }

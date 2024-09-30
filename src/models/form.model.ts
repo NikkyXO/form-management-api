@@ -1,12 +1,14 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { ApiProperty } from '@nestjs/swagger';
-import { Document } from 'mongoose';
+import { Document, Types } from 'mongoose';
 import { BaseEntity } from '../types';
+import { Account } from './account.model';
 
 export enum FieldType {
   TEXT = 'text',
   DROPDOWN = 'dropdown',
   CHECKBOX = 'checkbox',
+  MCQ = 'mcq,',
   //   MCQ = 'mcq',
 }
 
@@ -42,6 +44,15 @@ export class FormField {
   options?: Record<string, any>[];
 }
 
+@Schema({
+  timestamps: true,
+  versionKey: undefined,
+  toJSON: {
+    getters: true,
+    aliases: true,
+    virtuals: true,
+  },
+})
 @Schema()
 export class Form extends BaseEntity {
   @Prop({ required: true })
@@ -55,9 +66,9 @@ export class Form extends BaseEntity {
   @ApiProperty({ type: [FormField] })
   fields: FormField[];
 
-  @Prop({ required: true })
+  @Prop({ type: Types.ObjectId, ref: 'Account', required: true })
   @ApiProperty()
-  createdBy: string;
+  createdBy: Account;
 
   @Prop({ default: 0 })
   @ApiProperty()

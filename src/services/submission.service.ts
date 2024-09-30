@@ -20,13 +20,25 @@ export class SubmissionService {
 
   async create(createSubmissionDto: CreateSubmissionDto): Promise<Submission> {
     try {
-      const form = await this.formService.findOne(createSubmissionDto.formId);
+      const { accountId, formId, responses } = createSubmissionDto;
+      const form = await this.formService.findOne(formId);
 
       // Validate required fields
       for (const field of form.fields) {
-        if (field.required && !createSubmissionDto.responses[field.name]) {
+        if (field.required && !responses[field.name]) {
           throw new BadRequestException(`Field "${field.name}" is required`);
         }
+      }
+
+      const existingSubmission = await this.submissionModel.findOne({
+        form: form._id,
+        account: accountId,
+      });
+
+      if (existingSubmission) {
+        throw new BadRequestException(
+          `existing submission exists for user with id: ${accountId}`,
+        );
       }
 
       const createdSubmission = new this.submissionModel({

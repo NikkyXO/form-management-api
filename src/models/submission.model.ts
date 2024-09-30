@@ -4,6 +4,7 @@ import { Form } from './form.model';
 import { BaseEntity } from '../types';
 import { ApiProperty } from '@nestjs/swagger';
 import { Account } from './account.model';
+import { Responses } from '../dtos/submission.dto';
 
 export type SubmissionDocument = Submission & Document;
 
@@ -14,8 +15,8 @@ export class Submission extends BaseEntity {
   form: Form;
 
   @Prop({ type: Object, required: true })
-  @ApiProperty()
-  responses: Record<string, any>;
+  @ApiProperty({ type: [Responses] })
+  responses: Responses[];
 
   @Prop({ default: Date.now })
   @ApiProperty()
