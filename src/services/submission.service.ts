@@ -50,6 +50,7 @@ export class SubmissionService {
 
       return createdSubmission.save();
     } catch (err) {
+      console.log(`failed create submission: ${err.message}`);
       throw new InternalServerErrorException(err.message);
     }
   }
@@ -92,9 +93,11 @@ export class SubmissionService {
           responses: createSubmissionDto.responses,
           submittedAt: new Date(),
         });
+        console.log({ createdSubmission });
         return createdSubmission.save();
       }
     } catch (err) {
+      console.log(`failed submission: ${err.message}`);
       throw new InternalServerErrorException(err.message);
     }
   }

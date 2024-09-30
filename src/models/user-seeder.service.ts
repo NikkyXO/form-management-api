@@ -7,7 +7,6 @@ import { Account } from './account.model';
 
 const baseDir = process.cwd();
 const seederFilePath = join(baseDir, 'src/models/user.json');
-console.log({ seederFilePath });
 
 @Injectable()
 export class UserSeederService {

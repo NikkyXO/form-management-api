@@ -32,7 +32,6 @@ export class FormService {
         );
       }
       const createdForm = new this.formModel(createFormDto);
-      console.log({ createdForm });
       await createdForm.save();
       return successfulResponse({
         data: createdForm,
@@ -70,6 +69,7 @@ export class FormService {
       }
       return updatedForm;
     } catch (err) {
+      console.log({ updateError: err.message });
       throw new InternalServerErrorException(err.message);
     }
   }
