@@ -17,12 +17,12 @@ import { UserController } from './controllers/user.controller';
 
 @Module({
   imports: [
-    // ConfigModule.forRoot(),
-    ConfigModule.forRoot({
-      isGlobal: true,
-      load: [configuration],
-      envFilePath: '.env.fm',
-    }),
+    ConfigModule.forRoot(),
+    // ConfigModule.forRoot({
+    //   isGlobal: true,
+    //   load: [configuration],
+    //   envFilePath: '.env.fm',
+    // }),
     MongooseModule.forFeature([
       { name: Submission.name, schema: SubmissionSchema },
       { name: Form.name, schema: FormSchema },

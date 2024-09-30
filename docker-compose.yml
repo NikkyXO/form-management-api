@@ -7,6 +7,7 @@ services:
       - "3000:3000"
     environment:
       - mongoDBURI=mongodb://mongodb:27017/form-management
+      - MONGODB_URI=mongodb://mongodb:27017/form-management
     depends_on:
       - mongodb
     volumes:
