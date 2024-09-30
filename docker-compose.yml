@@ -3,6 +3,7 @@ version: '3.8'
 services:
   api:
     build: .
+    command: npm run test:cov
     ports:
       - "3000:3000"
     environment:

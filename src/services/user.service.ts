@@ -17,7 +17,7 @@ export class UserService {
   async findOne(id: string): Promise<Account> {
     const user = await this.userModel.findById(id).exec();
     if (!user) {
-      throw new NotFoundException(`User with ID ${id} not found`);
+      throw new NotFoundException(`Users with ID ${id} not found`);
     }
     return user;
   }

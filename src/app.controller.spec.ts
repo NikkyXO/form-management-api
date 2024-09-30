@@ -151,7 +151,6 @@ describe('AppController', () => {
 
     it('should retrieve  user submissions for the form', async () => {
       const response = await submissionController.findByForm(formId, userId);
-      console.log({ response });
       expect(response).toHaveProperty('form');
       expect(response).toHaveProperty('responses');
       expect(response).toHaveProperty('account');

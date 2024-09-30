@@ -7,7 +7,7 @@ import {
   Put,
   Delete,
 } from '@nestjs/common';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { CreateFormDto } from '../dtos/form.dto';
 import { ResponseDTO } from '../dtos/response.dto';
 import { Form } from '../models/form.model';
@@ -23,6 +23,9 @@ export class FormController {
   ) {}
 
   @Post()
+  @ApiOperation({
+    summary: 'To create a new Form',
+  })
   async create(
     @Body() createFormDto: CreateFormDto,
   ): Promise<ResponseDTO<{ form: Form; message: string }>> {
@@ -30,16 +33,25 @@ export class FormController {
   }
 
   @Get()
+  @ApiOperation({
+    summary: 'To fetch all created Forms',
+  })
   async findAll(): Promise<Form[]> {
     return this.formService.findAll();
   }
 
   @Get(':id')
+  @ApiOperation({
+    summary: 'To fetch a Form by Id',
+  })
   async findOne(@Param('id') id: string): Promise<Form> {
     return this.formService.findOne(id);
   }
 
   @Put(':id')
+  @ApiOperation({
+    summary: 'To update a Form by Id',
+  })
   async update(
     @Param('id') id: string,
     @Body() updateFormDto: CreateFormDto,
@@ -48,6 +60,9 @@ export class FormController {
   }
 
   @Delete(':id')
+  @ApiOperation({
+    summary: 'To delete a Form by Id',
+  })
   async remove(@Param('id') id: string): Promise<{ message: string }> {
     return this.formService.removeForm(id);
   }
